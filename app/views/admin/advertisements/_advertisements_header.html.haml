@@ -1,0 +1,9 @@
+%table
+  %tr
+    %th{ :width => '50%', :class => 'l1' } Název modulu
+    %th Aktivní
+    %th Velikost
+    %th &nbsp;
+    = render(:partial => 'advertisement', :collection => @collection)
+  %tr
+    %td{ :colspan => '3'}= will_paginate @collection, :previous_label => 'Předchozí', :next_label => 'Další'

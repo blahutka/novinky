@@ -1,0 +1,8 @@
+<div class="recordHeader"><h2><%= link_to 'Upravit modul', '#' %></h2></div>
+<div class="recordPath"></div>
+<div class="recordEdit">
+  <% form_for [:admin, @advertisement], :html => { 'data-remote' => true } do |f| %>
+      <h1><%= @advertisement.module_name %></h1><br>
+      <%= render :partial => 'form', :locals => {:f => f} %>
+  <% end %>
+</div>

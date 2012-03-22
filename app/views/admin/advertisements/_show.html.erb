@@ -1,0 +1,19 @@
+<div class="recordHeader"><h2><%= link_to 'Reklamní bannery', '#' %></h2></div>
+<div class="recordPath"></div>
+<div class="recordEdit">
+  <%= link_to 'Přidat Reklamu', '#', :class => 'show_new_advertisement_content' %>
+  <div id="form_new_advertisement_content" style="display: none;">
+    <%= render :partial => '/admin/advertisement_contents/new', :locals => {:advertisement => @advertisement} %>
+  </div>
+  <div class="listContent">
+    <%= render :partial => 'admin/advertisement_contents/index', :locals => {:advertisement_contents => @advertisement_contents} %>
+  </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('a.show_new_advertisement_content').click(function() {
+            $('#form_new_advertisement_content').toggle();
+            return false;
+        })
+    })
+</script>

@@ -1,0 +1,6 @@
+%tr{ :id => "#{dom_id(row)}" }
+  %td{ :class => 'listItem l1'}= row.advertiser_name
+  %td= image_tag(row.photo.url(:long))
+  = render(:partial => 'shared/admin/edit_delete', :locals => { :obj => row, :del => 'AdvertisementContent' })
+    
+    

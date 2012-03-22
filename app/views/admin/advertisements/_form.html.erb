@@ -1,0 +1,11 @@
+<div>
+  <%= f.label :module_name %>
+  <%= f.select :module_name, Advertisement::MODULE_NAMES %> <br><br>
+  <%= f.label :active %>
+  <%= f.check_box :active %>
+  <br><br>
+  <%= f.label :banner_size, 'Velikost obrázku DxŠ (pixels)' %>
+  <%= f.text_field :banner_size %>
+  <br><br>
+  <%= f.submit 'Ulozit' %>
+</div>

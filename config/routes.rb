@@ -101,6 +101,9 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :headliner_boxes
     admin.resources :text_pages
     admin.resources :holiday_definitions
+    admin.resources :advertisements do |advert|
+      advert.resources :advertisement_contents
+    end
   end
   
   #navrh na preview z admina

@@ -1,6 +1,6 @@
 class CreatePopupFonds < ActiveRecord::Migration
   def self.up
-    create_table :popup_fonds do |t|
+    create_table :popup_fonds, :force => true do |t|
       t.datetime :last_view_popup
       t.string :ip_address
 

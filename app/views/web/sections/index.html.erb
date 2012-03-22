@@ -1,37 +1,59 @@
 <%= auto_discovery_link_tag(:rss, "http://feeds.feedburner.com/DenikReferendum") %>
 <% foot_rss(rss_path(:action=>"index")) %>
 
-<p class="publication"><strong><%= Web::Calendar.current_day %></strong> <%= link_to "přehled vydání", archiv_path %></p>
+<p class="publication"><strong><%= Web::Calendar.current_day %></strong> <%= link_to "přehled vydání", archiv_path %>
+</p>
 <%= render :partial=> "web/articles/headliner_box" %>
 <ul class="list item">
-	<% @rel_articles.each do |article| -%>
-		<li><%= link_to article_name(article), detail_article_path(pretty_id(article)) %></li>
-	<% end if @rel_articles -%>
+  <% @rel_articles.each do |article| -%>
+      <li><%= link_to article_name(article), detail_article_path(pretty_id(article)) %></li>
+  <% end if @rel_articles -%>
   <% @dailyquestions.each do |q| %>
-    <li><%= link_to "Otázka dne: #{q.headline}", question_vote_path(:question_id=>"#{q.id}-#{q.headline.parameterize}")%></li>
-	<% end %>
+      <li><%= link_to "Otázka dne: #{q.headline}", question_vote_path(:question_id=>"#{q.id}-#{q.headline.parameterize}") %></li>
+  <% end %>
 </ul>
 
 <div class="box">
-  <h2 class="h <%= @headliner_box ? 'line' : '' -%>"><% if !week? %>Názory<% end %></h2>
-    <% cache(:action => params[:action], :action_suffix => "opinions_on_home_page") do %>
-  <div class="in itemList">
-    <%
-    length_limit = 5
-    ign_arr = [@headliner_box ? @headliner_box.article_id : 0]
-    ign_arr += @rel_articles.map{|a| a.id}.uniq
-    @today_opinions = Article.home_opinions(Time.now,Time.now,{:limit=>1,:ignore_arr=>ign_arr,:length_limit=>nil})
-    if @today_opinions.length < length_limit
-      @older_opinions = Article.home_opinions(Time.now.yesterday,Time.now.yesterday,{:limit=>20,:ignore_arr=>ign_arr,:length_limit=>length_limit-@today_opinions.length})
-    end
-    %>
-	<%= render :partial=>"web/articles/left_article", :collection=>@today_opinions,:locals=>{:with_date=>true,:small_class=>true} %>
-	<%= render :partial=>"web/articles/left_article", :collection=>@older_opinions,:locals=>{:with_date=>true,:small_class=>true} if @older_opinions %>   
-  </div> <!-- /.in -->
+  <h2 class="h <%= @headliner_box ? 'line' : '' -%>">
+    <% if !week? %>Názory
+    <% end %></h2>
+  <% cache(:action => params[:action], :action_suffix => "opinions_on_home_page") do %>
+      <div class="in itemList">
+        <%
+           length_limit = 5
+           ign_arr = [@headliner_box ? @headliner_box.article_id : 0]
+           ign_arr += @rel_articles.map { |a| a.id }.uniq
+           @today_opinions = Article.home_opinions(Time.now, Time.now, {:limit=>1, :ignore_arr=>ign_arr, :length_limit=>nil})
+           if @today_opinions.length < length_limit
+               @older_opinions = Article.home_opinions(Time.now.yesterday, Time.now.yesterday, {:limit=>20, :ignore_arr=>ign_arr, :length_limit=>length_limit-@today_opinions.length})
+           end
+        %>
+        <%= render :partial=>"web/articles/left_article", :collection=>@today_opinions, :locals=>{:with_date=>true, :small_class=>true} %>
+        <%= render :partial=>"web/articles/left_article", :collection=>@older_opinions, :locals=>{:with_date=>true, :small_class=>true} if @older_opinions %>
+      </div>
+      <!-- /.in -->
   <% end %>
 </div> <!-- /.box -->
 <%= render :partial=>"web/articles/referendum" %>
 
 <div class="box cols cols3">
   <%= render :partial=>"web/sections/box" %>
-</div> <!-- /.cols -->
+</div>
+<div class="box">
+  <% %>
+  
+  <% content_tag :div, :class => 'advertisement_home' do %>
+      <% link_to @add.link, :target => '_blank' do %>
+          <%= image_tag(@add.photo.url(:banner)) %>
+      <% end %>
+  <% end if @add %>
+  
+  <style type="text/css">
+      .advertisement_home {
+          height: 60px;
+          width: 468px; /*border: 1px solid #cccccc;*/
+          overflow: hidden;
+      }
+  </style>
+</div>
+<!-- /.cols -->

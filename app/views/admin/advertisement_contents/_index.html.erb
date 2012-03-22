@@ -1,0 +1,42 @@
+<% advertisement = advertisement_contents.first.advertisement  if advertisement_contents.any? %>
+<br><br>
+<h1><%= advertisement.module_name %> / <%= advertisement.banner_size %></h1>
+<br>
+<table>
+  <thead>
+  <tr>
+    <td>Zobrazovat</td>
+    <td>Zadavatel</td>
+    <td>Začátek</td>
+    <td>Konec</td>
+    <td>Náhled</td>
+    <td>Akce</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% advertisement_contents.each do |cont| %>
+      <% content_tag :tr, :id => dom_id(cont) do %>
+          <td><%= cont.active ? 'ano' : 'ne' %></td>
+          <td class="listItem l1"><%= cont.advertiser_name %></td>
+          <td><%= l(cont.date_start, :format => :short) if cont.date_start %></td>
+          <td><%= l(cont.date_finish, :format => :short) if cont.date_finish %></td>
+          <td><%= image_tag(cont.photo.url(:preview)) %></td>
+          <td>
+            <%#=  render(:partial => 'shared/admin/edit_delete', :locals => { :obj => cont, :del => 'AdvertisementContent' }) %>
+            <%= link_to 'Upravit', edit_admin_advertisement_advertisement_content_path(advertisement, cont), 'data-remote' => true %> &nbsp;|&nbsp;
+            <%= link_to 'Smazat', admin_advertisement_advertisement_content_path(advertisement, cont),
+                        'data-method'=> :delete, 'data-remote' => true, 'data-confirm' => 'Opravdu smazat?' %>
+          </td>
+      <% end %>
+  <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="5" style="text-align: center;">
+        <%= will_paginate advertisement_contents, :previous_label => 'Předchozí', :next_label => 'Další' %>
+      </td>
+      
+    </tr>
+  </tfoot>
+
+</table>

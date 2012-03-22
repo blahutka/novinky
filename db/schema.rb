@@ -9,7 +9,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110312232500) do
+ActiveRecord::Schema.define(:version => 20120321140213) do
+
+  create_table "advertisement_contents", :force => true do |t|
+    t.integer  "advertisement_id"
+    t.string   "advertiser_name"
+    t.string   "link",               :default => "http://"
+    t.text     "note"
+    t.integer  "viewed_num"
+    t.boolean  "active",             :default => true
+    t.date     "date_start"
+    t.date     "date_finish"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  create_table "advertisements", :force => true do |t|
+    t.string   "module_name"
+    t.string   "banner_size", :default => "468x60"
+    t.boolean  "active",      :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id"
@@ -29,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20110312232500) do
 
   add_index "albums", ["album_type", "created_at"], :name => "index_albums_on_album_type_and_created_at"
   add_index "albums", ["created_at"], :name => "index_albums_on_created_at"
-  add_index "albums", ["lft", "rgt"], :name => "index_albums_on_lft_and_rgt"
+  add_index "albums", ["lft", "rgt"], :name => "albums_lft_rgt_index"
   add_index "albums", ["parent_id"], :name => "albums_parent_id_index"
   add_index "albums", ["user_id"], :name => "albums_user_id_index"
 
@@ -120,10 +145,6 @@ ActiveRecord::Schema.define(:version => 20110312232500) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "article_selections", ["article_id"], :name => "index_article_selections_on_article_id"
-  add_index "article_selections", ["publish_date"], :name => "index_article_selections_on_publish_date"
-  add_index "article_selections", ["section_id"], :name => "article_selections_section_id_index"
 
   create_table "article_themes", :force => true do |t|
     t.integer "article_id"
@@ -267,7 +288,6 @@ ActiveRecord::Schema.define(:version => 20110312232500) do
     t.integer  "web_user_id"
   end
 
-  add_index "authors", ["firstname", "surname"], :name => "firstname_surname_index"
   add_index "authors", ["firstname"], :name => "index_authors_on_firstname"
   add_index "authors", ["surname"], :name => "index_authors_on_surname"
   add_index "authors", ["user_id"], :name => "authors_user_id_index"

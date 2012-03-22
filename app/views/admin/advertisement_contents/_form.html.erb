@@ -1,0 +1,38 @@
+<fieldset>
+  <% if params[:action].include?('edit') %>
+      <%= f.label :active, 'Zobrazovat' %>
+      <%= f.check_box :active %>
+      <br><br>
+  <% end %>
+  <%= f.label :advertiser_name, 'Zadavatel' %>
+  <%= f.text_field :advertiser_name %>
+  <br><br>
+  <%= f.label :date_start, 'Začátek' %>
+  <%= f.text_field :date_start, :style => 'width:100px;' %>
+  <%= f.label :date_finish, 'Konec' %>
+  <%= f.text_field :date_finish, :style => 'width:100px;', :id => 'date_end' %>
+  <br><br>
+  <%= f.label :link, 'Odkaz' %>
+  <%= f.text_field :link %>
+  <% if params[:action].include?('edit') %>
+      <br><br>
+      <%= f.label :upload, 'Obrázek' %>
+      <%= f.file_field(:photo) if params[:action].include?('edit') %>
+      <br><br>
+      <%= f.label :note, 'Poznámka' %>
+      <%= f.text_area :note, :style => 'height:50px; width:340px;' %>
+  <% end %>
+  <% if f.object.photo_file_size %>
+      <br><br>
+      <strong>Vygenerováné obrázky</strong>
+      <br><br>
+      <%# f.object.photo.styles.each do |key, value| %>
+          <%= f.label(:preview, "Puvodni obrazek oriznut na: #{f.object.advertisement.banner_size}") %>
+          <br>
+          <%= image_tag(f.object.photo.url(:banner)) %>
+          <br><br>
+      <%# end %>
+  <% end %>
+</fieldset>
+<br><br>
+<%= f.submit 'Uložit' %>

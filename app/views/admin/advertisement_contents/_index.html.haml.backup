@@ -1,0 +1,9 @@
+%table
+  %tr
+    %th{ :width => '25%', :class => 'l1' }= link_to 'nadpis', '#'
+    %th{ :width => '5%', :class => 'ar'  } PZ
+    %th{ :width => '10%'    }= link_to 'typ', '#'
+    %th{ :width => '5%'    } &nbsp;
+    = render(:partial => '/admin/advertisement_contents/row', :collection => @advertisement_contents)
+  %tr
+    %td{ :colspan => '8'}= will_paginate @advertisement_contents, :previous_label => 'Předchozí', :next_label => 'Další'

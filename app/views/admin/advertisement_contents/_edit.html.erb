@@ -1,0 +1,9 @@
+<div class="recordHeader">
+  <h2><%= link_to @advertisement.module_name, admin_advertisement_path(@advertisement_content.advertisement), 'data-remote' => true %></h2>
+</div>
+<div class="recordPath"></div>
+<div class="recordEdit">
+  <% form_for [:admin, @advertisement_content.advertisement, @advertisement_content], :html => {:multipart => true, } do |f| %>
+      <%= render :partial => '/admin/advertisement_contents/form', :locals => {:f => f} %>
+  <% end %>
+</div>

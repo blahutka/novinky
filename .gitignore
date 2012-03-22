@@ -11,3 +11,7 @@ config/deploy.rb
 config/*sphinx*
 public/assets
 noviny.tmproj
+.idea
+.rvmrc
+Gemfile
+Gemfile.lock

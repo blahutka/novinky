@@ -1,0 +1,12 @@
+%tr{ :id => "advertisement_#{advertisement.id}" }
+  -#%td{ :class => 'listItem l1'}= link_to article.name, '#', :title => article.name, :class => 'file', :onclick => "editRecord($(this), '#{@c_name}' ); return false"
+  %td{ :class => 'listItem l1'}
+    = link_to advertisement.module_name, admin_advertisement_path(advertisement), :title => advertisement.module_name, :class => 'file', 'data-remote' => true
+  %td
+    = advertisement.active
+  %td
+    = advertisement.banner_size
+  %td{}
+    = render(:partial => 'shared/admin/edit_delete', :locals => { :obj => advertisement, :del => 'Advertisement' })
+    
+    

@@ -97,6 +97,8 @@ table.addedFile{
 
 }
 
+label {width: 200px;}
+
 .listImageItemBox { width: 85px; height: 85px; background-color: gray; text-align: center; position: relative; margin: 0px auto; margin-top:5px;}
 .cropLine { overflow: hidden; width: 100%; height: 1em; }
 .listItem .cropLine { height:22px; }

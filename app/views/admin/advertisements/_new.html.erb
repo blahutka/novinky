@@ -1,0 +1,7 @@
+<div class="recordHeader"><h2><%= link_to 'Novy modul', '#' %></h2></div>
+<div class="recordPath"></div>
+<div class="recordEdit">
+  <% form_for @advertisement, :url => admin_advertisements_path do |f| %>
+      <%= render :partial => 'form', :locals => {:f => f} %>
+  <% end %>
+</div>

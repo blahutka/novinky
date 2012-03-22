@@ -1,0 +1,7 @@
+<% form_for AdvertisementContent.new, :url => admin_advertisement_advertisement_contents_path(advertisement),
+            :html => {:multipart => true, 'data-remote' => true} do |f| %>
+
+    <%= render :partial => '/admin/advertisement_contents/form', :locals => {:f => f} %>
+
+<% end %>
+

@@ -1,0 +1,8 @@
+- form_tag admin_advertisements_path, :method => :get, :id => 'search_advertisements' do
+  %fieldset
+    %strong filtr:
+    = text_field_tag :search, params[:search]
+    = submit_tag "Hledej", :name => nil
+    %input{ :id => 'cancelSearchAdvertisements', :name => 'cancel', :value => 'Zrusit vyhledavani', :type => 'button' }
+= link_to '+ novy zaznam', "#", :class => 'fr', :id => 'advertisement_new', :onclick => 'newArticle(); return false'
+.clearer
