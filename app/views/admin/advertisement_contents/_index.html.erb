@@ -1,6 +1,6 @@
-<% advertisement = advertisement_contents.first.advertisement  if advertisement_contents.any? %>
+<%# advertisement = advertisement_contents.first.advertisement  if advertisement_contents.any? %>
 <br><br>
-<h1><%= advertisement.module_name %> / <%= advertisement.banner_size %></h1>
+<h1><%= @advertisement.module_name %> / <%= @advertisement.banner_size %></h1>
 <br>
 <table>
   <thead>
@@ -32,7 +32,7 @@
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="5" style="text-align: center;">
+      <td colspan="6" style="text-align: center;">
         <%= will_paginate advertisement_contents, :previous_label => 'Předchozí', :next_label => 'Další' %>
       </td>
       

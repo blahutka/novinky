@@ -6,4 +6,4 @@
     %th &nbsp;
     = render(:partial => 'advertisement', :collection => @collection)
   %tr
-    %td{ :colspan => '3'}= will_paginate @collection, :previous_label => 'Předchozí', :next_label => 'Další'
+    %td{ :colspan => '4'}= will_paginate @collection, :previous_label => 'Předchozí', :next_label => 'Další'
