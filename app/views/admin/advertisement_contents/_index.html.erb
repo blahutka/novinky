@@ -1,4 +1,4 @@
-<%# advertisement = advertisement_contents.first.advertisement  if advertisement_contents.any? %>
+<% @advertisement = advertisement_contents.first.advertisement  if advertisement_contents.any? && !@advertisement %>
 <br><br>
 <h1><%= @advertisement.module_name %> / <%= @advertisement.banner_size %></h1>
 <br>
