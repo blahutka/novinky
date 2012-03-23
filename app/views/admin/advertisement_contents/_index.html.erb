@@ -23,8 +23,8 @@
           <td><%= image_tag(cont.photo.url(:preview)) %></td>
           <td>
             <%#=  render(:partial => 'shared/admin/edit_delete', :locals => { :obj => cont, :del => 'AdvertisementContent' }) %>
-            <%= link_to 'Upravit', edit_admin_advertisement_advertisement_content_path(advertisement, cont), 'data-remote' => true %> &nbsp;|&nbsp;
-            <%= link_to 'Smazat', admin_advertisement_advertisement_content_path(advertisement, cont),
+            <%= link_to 'Upravit', edit_admin_advertisement_advertisement_content_path(@advertisement, cont), 'data-remote' => true %> &nbsp;|&nbsp;
+            <%= link_to 'Smazat', admin_advertisement_advertisement_content_path(@advertisement, cont),
                         'data-method'=> :delete, 'data-remote' => true, 'data-confirm' => 'Opravdu smazat?' %>
           </td>
       <% end %>
