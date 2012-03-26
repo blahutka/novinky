@@ -40,20 +40,6 @@
   <%= render :partial=>"web/sections/box" %>
 </div>
 <div class="box">
-  <% %>
-  
-  <% content_tag :div, :class => 'advertisement_home' do %>
-      <% link_to @add.link, :target => '_blank' do %>
-          <%= image_tag(@add.photo.url(:banner)) %>
-      <% end %>
-  <% end if @add %>
-  
-  <style type="text/css">
-      .advertisement_home {
-          height: 60px;
-          width: 468px; /*border: 1px solid #cccccc;*/
-          overflow: hidden;
-      }
-  </style>
+   <%= render :partial => '/layouts/web/adverts/home_left' %>
 </div>
 <!-- /.cols -->
