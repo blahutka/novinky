@@ -1,4 +1,4 @@
-<%# advertisement = advertisement_contents.first.advertisement  if advertisement_contents.any? %>
+<% @advertisement = advertisement_contents.first.advertisement  if advertisement_contents.any? && !@advertisement %>
 <br><br>
 <h1><%= @advertisement.module_name %> / <%= @advertisement.banner_size %></h1>
 <br>
@@ -23,8 +23,8 @@
           <td><%= image_tag(cont.photo.url(:preview)) %></td>
           <td>
             <%#=  render(:partial => 'shared/admin/edit_delete', :locals => { :obj => cont, :del => 'AdvertisementContent' }) %>
-            <%= link_to 'Upravit', edit_admin_advertisement_advertisement_content_path(advertisement, cont), 'data-remote' => true %> &nbsp;|&nbsp;
-            <%= link_to 'Smazat', admin_advertisement_advertisement_content_path(advertisement, cont),
+            <%= link_to 'Upravit', edit_admin_advertisement_advertisement_content_path(@advertisement, cont), 'data-remote' => true %> &nbsp;|&nbsp;
+            <%= link_to 'Smazat', admin_advertisement_advertisement_content_path(@advertisement, cont),
                         'data-method'=> :delete, 'data-remote' => true, 'data-confirm' => 'Opravdu smazat?' %>
           </td>
       <% end %>
