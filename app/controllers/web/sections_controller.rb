@@ -193,7 +193,8 @@ class Web::SectionsController < Web::WebController
     arr += @opinions if @opinions
     arr += @right_boxes if @right_boxes
     @ign_arr = arr.map { |a| a.id }.uniq
-    @add = Advertisement.active('home_page').first.advertisement_contents.with_active_date.first
+    advertisement = Advertisement.active('home_page').first
+    @add = advertisement.advertisement_contents.with_active_date.first if advertisement
     #@down_boxes, down_arr = Article.down_boxes(section_id,@ign_arr)
     #@ign_arr += down_arr.map{|a| a.id}
   end
