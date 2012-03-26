@@ -1,11 +1,13 @@
-<%= auto_discovery_link_tag(:rss, :controller=>"web/rss",:action => 'section',:section_id=>1) %>
-<% foot_rss(rss_path(:action=>"section",:section_id=>1)) %>
+<%= auto_discovery_link_tag(:rss, :controller=>"web/rss", :action => 'section', :section_id=>1) %>
+<% foot_rss(rss_path(:action=>"section", :section_id=>1)) %>
 
 <%= render :partial=> "web/articles/headliner_box" %>
 <%= render :partial=> "web/articles/related" %>
-<%= render :partial=> "web/articles/article_div" %>	        
+<%= render :partial=> "web/articles/article_div" %>
 
 <div class="box cols cols3">
- <%= render :partial=>"web/sections/box" %>
+  <%= render :partial=>"web/sections/box" %>
 </div> <!-- /.cols -->
- <%= render :partial => '/layouts/web/adverts/home_left' %>
+<div class="box">
+  <%= render :partial => '/layouts/web/adverts/home_left' %>
+</div>
